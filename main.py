@@ -16,6 +16,11 @@ def main(page:Page):
         container_to_add_Responsable.visible=True
         page.add(container_to_add_Responsable)
 
+    def make_container_to_add_tache_visible(e):
+        page.clean()
+        container_to_add_taches.visible=True
+        page.add(container_to_add_taches)
+
 
 
     #on peut controler la visibiliter des containner pour organiser la page 
@@ -29,7 +34,6 @@ def main(page:Page):
                         TextField(label="date de fin",width=200),
                     ]
                 ),
-            
                 Row(
                     [
                         ElevatedButton("ajouter",on_click=...),
@@ -42,8 +46,9 @@ def main(page:Page):
     )
 
         
-
     container_to_add_fournisseur=Container(
+        #cette interface permet de ajouter un fournisseur 
+        #un fournisseur ou prestataire peux nous fournir plusieur document 
         content=Column([
                 Text("ajouter fournisseur ou plus "),
                 TextField(hint_text="raison social"),
@@ -60,6 +65,21 @@ def main(page:Page):
                 ),
                 Row(
                     [
+                        TextField(label="doc a demander"),
+                        #cette button doit ajouter une autre input pour saisr le nom de doc a demander s'il y a plusieur doc a demander pour chaque fournisseur 
+                        TextButton("add",icon="add")
+                    ]
+                ),
+                Dropdown(
+                        width=250,
+                        hint_text="paiement",
+                        options=[
+                            dropdown.Option("Oui"),
+                            dropdown.Option("Non")
+                        ],
+                ),
+                Row(
+                    [
                         ElevatedButton("ajouter",on_click=...),
                         ElevatedButton("Etape suivante",on_click=make_container_to_add_Responsable_visible)
                     ]
@@ -71,6 +91,7 @@ def main(page:Page):
     )
 
     container_to_add_Responsable=Container(
+        #cette interface permet d'ajouter un responsable 
         content=Column([
                 Text("ajouter un responsable ou plus"),
                 TextField(hint_text="le nom responsable ou les responsable"),
@@ -85,19 +106,56 @@ def main(page:Page):
                             dropdown.Option("autre")
                         ],
                 ),
-                ElevatedButton("ajouter",on_click=...)
+                Row(
+                    [
+                        ElevatedButton("ajouter",on_click=...),
+                        ElevatedButton("Etape suivante",on_click=make_container_to_add_tache_visible)
+                    ]
+                )
                 
             ]
         ),
         
         visible=False   
-    ) 
-        
-    
-    
+    )
 
+    container_to_add_taches=Container(
+        #cette interface permet de creer des taches et les affecter a un responsable 
+        #un seul responsable peux etre charger par plusieur taches 
+        content=Column(
+            [
+                Text("gerer les taches"),
+                Row(
+                    [
+                        TextField(label="creer une tache"),
+                        #ajouter input pour les taches de plus 
+                        TextButton(icon="add")
+                    ]
+                ),
+                Dropdown(
+                        width=250,
+                        hint_text="responsable de la tache",
+                        options=[
+                            dropdown.Option("admin"),
+                            dropdown.Option("charger de projet"),
+                            dropdown.Option("coordinateur"),
+                            dropdown.Option("animateur"),
+                            dropdown.Option("autre")
+                        ],
+                ),
+                Row(
+                    [
+                        ElevatedButton("ajouter",on_click=...),
+                        ElevatedButton("Dashbord",on_click=...)
+                    ]
+                )
+            ]
+        ),
+        visible=False
+    ) 
+    
     page.add(
-        container_to_add_activite,container_to_add_fournisseur,container_to_add_Responsable
+        container_to_add_activite
     )
     page.update()
 
