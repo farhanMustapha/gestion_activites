@@ -1,0 +1,2 @@
+class Tache:
+    pass
