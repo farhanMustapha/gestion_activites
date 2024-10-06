@@ -53,7 +53,7 @@ def main(page:Page):
         content=Column([
                 Text("ajouter fournisseur ou plus "),
                 TextField(hint_text="raison social"),
-                TextField(hint_text="le type de prestation"),
+                TextField(hint_text="le type de prestation",multiline=True),
                 Dropdown(
                         width=250,
                         hint_text="affecter une activiter",
@@ -81,6 +81,7 @@ def main(page:Page):
                 ),
                 Row(
                     [
+                        ElevatedButton("Etape precedente",on_click=...),
                         ElevatedButton("ajouter",on_click=...),
                         ElevatedButton("Etape suivante",on_click=make_container_to_add_Responsable_visible)
                     ]
@@ -109,6 +110,7 @@ def main(page:Page):
                 ),
                 Row(
                     [
+                        ElevatedButton("Etape precedente",on_click=...),
                         ElevatedButton("ajouter",on_click=...),
                         ElevatedButton("Etape suivante",on_click=make_container_to_add_tache_visible)
                     ]
@@ -146,6 +148,7 @@ def main(page:Page):
                 ),
                 Row(
                     [
+                        ElevatedButton("Etape precedente",on_click=...),
                         ElevatedButton("ajouter",on_click=...),
                         ElevatedButton("Dashbord",on_click=...)
                     ]
