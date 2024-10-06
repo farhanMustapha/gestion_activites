@@ -5,6 +5,7 @@ def main(page:Page):
     page.window.width=450
     page.title="gestion des activites"
 
+#============ services ==================================
     
     def make_container_to_add_fournisseur_visible(e):
         page.clean()
@@ -20,9 +21,9 @@ def main(page:Page):
         page.clean()
         container_to_add_taches.visible=True
         page.add(container_to_add_taches)
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-
+#================ Views =================================================
     #on peut controler la visibiliter des containner pour organiser la page 
     container_to_add_activite=Container(
         content=Column([
@@ -153,7 +154,9 @@ def main(page:Page):
         ),
         visible=False
     ) 
-    
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# ===========home =====================================================   
     page.add(
         container_to_add_activite
     )
